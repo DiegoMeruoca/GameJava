@@ -78,15 +78,15 @@ public class PlayScreen implements Screen {
     }
 
     private void handleInput(float dt) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) { //Se pressiona a seta pra cima
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && player.currentState != Mario.State.JUMPING) { //Se pressiona a seta pra cima
             //Sera aplicado um impulso linear vertical no centro co corpo, se estiver dormindo sera acordado
-            player.b2dBody.applyLinearImpulse(new Vector2(0, 4f), player.b2dBody.getWorldCenter(), true);
+            player.b2dBody.applyLinearImpulse(new Vector2(0, 3f), player.b2dBody.getWorldCenter(), true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2dBody.getLinearVelocity().x <= 2) { //Se pressiona a seta pra cima
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2dBody.getLinearVelocity().x <= 1.1) { //Se pressiona a seta pra cima
             //Sera aplicado um impulso linear vertical no centro co corpo, se estiver dormindo sera acordado
             player.b2dBody.applyLinearImpulse(new Vector2(0.1f, 0), player.b2dBody.getWorldCenter(), true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2dBody.getLinearVelocity().x >= -2) { //Se pressiona a seta pra cima
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2dBody.getLinearVelocity().x >= -1.1) { //Se pressiona a seta pra cima
             //Sera aplicado um impulso linear vertical no centro co corpo, se estiver dormindo sera acordado
             player.b2dBody.applyLinearImpulse(new Vector2(-0.1f, 0), player.b2dBody.getWorldCenter(), true);
         }

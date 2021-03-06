@@ -7,7 +7,8 @@ import com.diegomeruoca.plaraforma.screens.PlayScreen;
 public class Plataforma extends Game {
 	public SpriteBatch batch; // Conatainer para armazenar todas imagens e textura
 	public static final int V_WIDITH = 400; // Define a largura virtual e
-	public static final int V_HEIGHT = 208; //a altura virtual para o jogo
+	public static final int V_HEIGHT = 208; //a altura virtual para o
+	public static final float PPM = 100; //Pixels por metro
 	
 	@Override
 	public void create () {

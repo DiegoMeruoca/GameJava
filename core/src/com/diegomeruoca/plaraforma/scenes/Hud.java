@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.diegomeruoca.plaraforma.Plataforma;
@@ -14,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 
 import java.awt.*;
 
-public class Hud {
+public class Hud implements Disposable {
     public Stage stage; //Armazenará a tela
     public Viewport viewport; //Janela de exibição exclusiva do hud
 
@@ -66,5 +67,8 @@ public class Hud {
 
     }
 
-
+    @Override
+    public void dispose() {
+        stage.dispose();
+    }
 }

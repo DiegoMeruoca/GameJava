@@ -3,6 +3,7 @@ package com.diegomeruoca.plaraforma.sprites;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.diegomeruoca.plaraforma.Plataforma;
@@ -116,5 +117,12 @@ public class Mario extends Sprite {
 
         fixtureDef.shape = shape;
         b2dBody.createFixture(fixtureDef);
+
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-2 / Plataforma.PPM, 7 / Plataforma.PPM), new Vector2(2 / Plataforma.PPM, 7 / Plataforma.PPM));
+        fixtureDef.shape = head;
+        fixtureDef.isSensor = true;
+
+        b2dBody.createFixture(fixtureDef).setUserData("head");
     }
 }

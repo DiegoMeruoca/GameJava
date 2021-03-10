@@ -46,15 +46,15 @@ public class B2WoldCreator {
             body.createFixture(fixtureDef);
         }
 
-        //Percorre os objetos do mapa, pegando os objetos da camada 4 (bricks - blocos) para criar bodies/fixtures
-        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
+        //Percorre os objetos do mapa, pegando os objetos da camada 5 (bricks - blocos) para criar bodies/fixtures
+        for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
             new Brick(world,map, rect);
         }
 
-        //Percorre os objetos do mapa, pegando os objetos da camada 5 (Coins - moedas - caixas de ?) para criar bodies/fixtures
-        for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
+        //Percorre os objetos do mapa, pegando os objetos da camada 4 (Coins - moedas - caixas de ?) para criar bodies/fixtures
+        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
            new Coin(world, map, rect);

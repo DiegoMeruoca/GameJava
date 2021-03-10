@@ -20,6 +20,7 @@ import com.diegomeruoca.plaraforma.Plataforma;
 import com.diegomeruoca.plaraforma.scenes.Hud;
 import com.diegomeruoca.plaraforma.sprites.Mario;
 import com.diegomeruoca.plaraforma.tools.B2WoldCreator;
+import com.diegomeruoca.plaraforma.tools.WorldContactListner;
 
 public class PlayScreen implements Screen {
     private Plataforma game; // Instacia um objeto do tipo
@@ -66,6 +67,8 @@ public class PlayScreen implements Screen {
         new B2WoldCreator(world, map);
 
         player = new Mario(world, this); //Criando o mario no mapa
+
+        world.setContactListener(new WorldContactListner());
     }
 
     @Override

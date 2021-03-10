@@ -114,6 +114,9 @@ public class Mario extends Sprite {
         FixtureDef fixtureDef = new FixtureDef();
         CircleShape shape = new CircleShape();
         shape.setRadius(7 / Plataforma.PPM);
+        fixtureDef.filter.categoryBits = Plataforma.MARIO_BIT; //Definir qual tipo de filtro é esse
+        //Com quem o mario pode colidir
+        fixtureDef.filter.maskBits = Plataforma.DEFAULT_BIT | Plataforma.BRICK_BIT | Plataforma.COIN_BIT | Plataforma.PIPE_BIT;
 
         fixtureDef.shape = shape;
         b2dBody.createFixture(fixtureDef);

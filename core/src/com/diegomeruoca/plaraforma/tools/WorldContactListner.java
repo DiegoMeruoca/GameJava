@@ -25,12 +25,11 @@ public class WorldContactListner implements ContactListener {
                 ((InteractiveTileObject) obj.getUserData()).onHeadHit();
             }
         }
-        Gdx.app.log("Inicio de um contato", "");
     }
 
     @Override
     public void endContact(Contact contact) {
-        Gdx.app.log("Fim de um contato", "");
+
     }
 
     @Override

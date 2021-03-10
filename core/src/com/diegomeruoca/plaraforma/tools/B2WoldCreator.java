@@ -59,5 +59,12 @@ public class B2WoldCreator {
 
            new Coin(world, map, rect);
         }
+
+        //Percorre os objetos do mapa, pegando os objetos da camada 3 (Coins - moedas - caixas de ?) para criar bodies/fixtures
+        for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+
+            new Coin(world, map, rect);
+        }
     }
 }

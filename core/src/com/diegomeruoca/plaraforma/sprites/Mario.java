@@ -2,6 +2,7 @@ package com.diegomeruoca.plaraforma.sprites;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -15,6 +16,7 @@ public class Mario extends Sprite {
     public State previousState;
     public World world;
     public Body b2dBody;
+    public TextureAtlas.AtlasRegion atlasRegion;
     private TextureRegion marioStand;
     private Animation marioRun;
     private Animation marioJump;
@@ -22,32 +24,31 @@ public class Mario extends Sprite {
     private boolean runningRight;
 
     public Mario(World world, PlayScreen playScreen){
-        super(playScreen.getAtlas().findRegion("little_mario"));
         this.world = world;
         currentState = State.STANDING;
         previousState = State.STANDING;
         stateTimer = 0;
         runningRight = true;
 
-
+        atlasRegion = playScreen.getAtlas().findRegion("Armature_Walk");
         Array<TextureRegion> frames = new Array<TextureRegion>();//Criar um array p receber as texturas
 
         //Corrida
         for(int i = 1; i<=3; i++){ //Percorrendo da 1 até a 3 (onde estão as imagens da corrida)
-            frames.add(new TextureRegion(getTexture(), i * 16, 0, 16 ,16 )); //Adiciona cada imagem no array
+            frames.add(new TextureRegion(atlasRegion.getTexture(), i * 16, 0, 16 ,16 )); //Adiciona cada imagem no array
         }
         marioRun = new Animation(0.1f, frames); //Adiciona o array na animação
         frames.clear(); //Limpa o Array
 
         //Pulo
         for(int i = 4; i<=5; i++){ //Percorrendo da 4 até a 5 (onde estão as imagens do pulo)
-            frames.add(new TextureRegion(getTexture(), i * 16, 0, 16 ,16 )); //Adiciona cada imagem no array
+            frames.add(new TextureRegion(atlasRegion.getTexture(), i * 16, 0, 16 ,16 )); //Adiciona cada imagem no array
         }
         marioJump = new Animation(0.1f, frames); //Adiciona o array na animação
         frames.clear(); //Limpa o Array
 
         //Parado
-        marioStand = new TextureRegion(getTexture(), 0 , 0, 16, 16);
+        marioStand = new TextureRegion(atlasRegion.getTexture(), 0 , 0, 16, 16);
 
         defineMario();
         setBounds(0, 0, 16 / Plataforma.PPM, 16 / Plataforma.PPM);
